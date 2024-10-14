@@ -1,0 +1,10 @@
+FROM golang:1.20-alpine
+
+WORKDIR /goapp
+
+COPY . .
+RUN go build -o server ./main.go
+
+CMD ["./server"]
+
+EXPOSE 8080
