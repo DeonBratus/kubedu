@@ -1,34 +1,34 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1 
+kind: Deployment # type of manifest is deployment, which can create and update pods
 metadata:
-  name: app-server
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: app-server
-  strategy:
-    type: RollingUpdate
-  template:
+  name: app-server # name of this deploymnet is app-server
+spec: # specification of deployment
+  replicas: 2 # creating 2 replicas
+  selector: # using for connection between deployments and pods inside dep
+    matchLabels: # set labels which help to find pods 
+      app: app-server # name of match
+  strategy: # set deployment srategy
+    type: RollingUpdate # k8s will update only one pod at moment
+  template:  # templates for pods
     metadata:
       labels:
-        app: app-server
+        app: app-server # template name of pods
     spec:
-      containers:
-      - image: ifilyaninitmo/itdt-contained-frontend:master 
-        imagePullPolicy: Always
-        name: app-server
+      containers: # info about containers
+      - image: ifilyaninitmo/itdt-contained-frontend:master # image of conteiners
+        imagePullPolicy: Always # k8s will try to launch latest version of img
+        name: app-server # name of container in pods env
         ports:
-        - containerPort: 3000
-        resources:
-          requests:
+        - containerPort: 3000 # open port 3000 
+        resources: # set resources
+          requests: # set minimums
             memory: "128Mi"
             cpu: "250m"
-          limits:
+          limits: # set limits
             memory: "512Mi"
             cpu: "500m"
-        env:
-        - name: REACT_APP_USERNAME
+        env: # set env values
+        - name: REACT_APP_USERNAME # set name for app
           value: "CHEL"
-        - name: REACT_APP_COMPANY_NAME
+        - name: REACT_APP_COMPANY_NAME # set company name for app
           value: "Mnogo_chelov"

@@ -1,14 +1,14 @@
-apiVersion: v1
-kind: Service
+apiVersion: v1 # set api version
+kind: Service # set type Service
 metadata:
   labels:
-    app: app-server-service
-  name: app-server-service
-spec:
-  type: NodePort
-  ports:
-  - name: http
-    port: 31000        # Порт, на который будет доступен сервис
-    targetPort: 3000   # Порт, на котором контейнер слушает
+    app: app-server-service # set labels
+  name: app-server-service # set name of service
+spec: # specification
+  type: NodePort # set type of service - NodePort
+  ports: # set ports info
+  - name: http # name of port
+    port: 31000        # internal port inside cluster
+    targetPort: 3000   # service send trafic to this port
   selector:
-    app: go-server     # Убедитесь, что метка соответствует метке в Deployment
+    app: app-server     # Убедитесь, что метка соответствует метке в Deployment
