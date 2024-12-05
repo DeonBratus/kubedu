@@ -1,0 +1,12 @@
+apiVersion: v1 # version of api k8s
+kind: Pod # the type of object is Pod
+metadata: 
+  name: vault # the name of pod
+  labels: 
+    app: vault # the name of app, can be useful for searching
+spec:  # this is specification for pod
+  containers: # inforamtion about containers which will be launched in the pod
+  - name: http # container name
+    image: hashicorp/vault # image of container
+    ports:
+    - containerPort: 8200 # container listens to external port 8200  

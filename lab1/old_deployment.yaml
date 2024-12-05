@@ -1,3 +1,5 @@
+# I before writting this manifest i don't read insturction from github,
+# and just go to read something on habr))
 apiVersion: apps/v1
 kind: Deployment
 metadata:
