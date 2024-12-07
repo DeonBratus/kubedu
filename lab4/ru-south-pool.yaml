@@ -1,0 +1,9 @@
+apiVersion: crd.projectcalico.org/v1
+kind: IPPool
+metadata:
+  name: south-zone-ippool
+spec: 
+  cidr: 192.168.2.0/24
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: zone == 'ru-south'

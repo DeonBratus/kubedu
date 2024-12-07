@@ -6,7 +6,7 @@
 **Group**: K4110c\
 **Author**: Bratus Denis Alekseevich\
 **Lab**: Lab2\
-**Date of create**: 15.10.2023\
+**Date of create**: 15.10.2024\
 **Date of finished**: -\
 
 ---

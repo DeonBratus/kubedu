@@ -1,0 +1,9 @@
+apiVersion: crd.projectcalico.org/v1
+kind: IPPool
+metadata:
+  name: north-zone-ippool
+spec:
+  cidr: 192.168.1.0/24
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: zone == "ru-north"

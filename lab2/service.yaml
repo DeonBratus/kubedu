@@ -11,4 +11,4 @@ spec: # specification
     port: 31000        # internal port inside cluster
     targetPort: 3000   # service send trafic to this port
   selector:
-    app: app-server     # Убедитесь, что метка соответствует метке в Deployment
+    app: app-server
