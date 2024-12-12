@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app-replicaset
+  labels:
+    app: app-server
+spec:
+  replicas: 2 # Задаем количество реплик
+  selector:
+    matchLabels:
+      app: app-server # Указывает, какие поды контролировать
+  template:
+    metadata:
+      labels:
+        app: app-server # Метка для подов, созданных этим ReplicaSet
+    spec:
+      containers:
+      - name: app-server
+        image: ifilyaninitmo/itdt-contained-frontend:master
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap # Имя ConfigMap
+              key: REACT_APP_USERNAME # Ключ в ConfigMap
+        - name: REACT_APP_COMPANY_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: REACT_APP_COMPANY_NAME
